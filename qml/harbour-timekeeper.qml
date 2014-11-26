@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
 import "pages/database.js" as Database
+import "cover"
 import harbour.timekeeper 1.0
 
 ApplicationWindow
@@ -26,11 +27,14 @@ ApplicationWindow
         TimeLocalizer { }
     }
     initialPage: Component { HomePage { } }
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    cover: CoverPage {
+        id: coverPage
+    }
+
     Timer {
-        //flaw is that second is not 100% accurate, also timer could increase battery usage
+        //flaw is that second is not 100% accurate
         id: timeUpdater
-        running: true;
+        running: Qt.ApplicationActive || coverPage.status === Cover.Active;
         triggeredOnStart: true; interval: 1000; repeat: true;
         onTriggered: clockModel.updateTime()
     }
