@@ -1,4 +1,4 @@
-harbour-timekeeper
+Timekeeper
 ==================
 
 A world clock application for Sailfish OS.
