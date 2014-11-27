@@ -74,7 +74,7 @@ Page {
     }
 
     Timer {
-        running: true; interval: 1000; repeat: true
+        running: Qt.ApplicationActive; interval: 1000; repeat: true
         onTriggered: { convertedTime = localizer.getTime(); offsetLabel.offsetText = localizer.getOffsetText() }
     }
 }
