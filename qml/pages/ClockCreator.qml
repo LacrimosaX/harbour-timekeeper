@@ -14,8 +14,17 @@ Dialog {
     property string timeOffsetSignText: timeOffsetPositive ? "+" : "-";
     property bool useTimezone: true;
     canAccept: customTimeSwitch.checked ? true : (timezone !== "")
+    Component {
+        id: tzModelComponent
+        TimezoneModel {}
+    }
+
     Component.onCompleted: {
         customTimeSwitch.checked = !useTimezone;
+        var tzModel = tzModelComponent.createObject(clockCreator)
+        for(var key in tzModel) {
+            console.log(key + " = " + tzModel[key])
+        }
     }
 
     SilicaFlickable {

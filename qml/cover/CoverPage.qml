@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-
+    Component.onCompleted: console.log("cover status: " + status)
     CoverPlaceholder {
         text: "Timekeeper"
         //icon.source: "image/harbour-timekeeper"
@@ -33,7 +33,6 @@ CoverBackground {
         }
         clip: true
         height: count > 0 ? 4*currentItem.height : 0
-        Component.onCompleted: console.log(height)
         delegate: ListItem {
             id: listItem
             contentHeight: timeLabel.height + infoLabel.height + Theme.paddingSmall
